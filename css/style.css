@@ -35,15 +35,11 @@ header {
     transform: translateY(-50%);
     width: 150px;
     height: auto;
-
-    /* Contorno branco + reforço preto dos lados */
     filter: 
-        drop-shadow(2px 0 3px rgba(0,0,0,0.8))   /* sombra preta à direita */
-        drop-shadow(-2px 0 3px rgba(0,0,0,0.8))  /* sombra preta à esquerda */
-        drop-shadow(0 0 3px rgba(104, 98, 98, 0.7)); /* halo branco leve */
+        drop-shadow(2px 0 3px rgba(0,0,0,0.8))
+        drop-shadow(-2px 0 3px rgba(0,0,0,0.8))
+        drop-shadow(0 0 3px rgba(104, 98, 98, 0.7));
 }
-
-
 
 .header-text h1 {
     font-family: 'Rajdhani', sans-serif;
@@ -161,6 +157,40 @@ h2 {
     transform: translateY(-50%) scale(1.1);
 }
 
+/* Vídeos */
+.videos {
+    text-align: center;
+}
+
+.videos-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.video-card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    max-width: 360px;
+    flex: 1 1 300px;
+}
+
+.video-card iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 6px;
+    border: none;
+}
+
+.video-card p {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    color: #cfe2ff;
+}
+
 /* Empresas */
 .empresas {
     text-align: center;
@@ -174,6 +204,9 @@ h2 {
 }
 
 .logos-container img {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    object-fit: contain;
+
     width: 120px;
     height: auto;
     transition: transform 0.3s ease;
@@ -181,6 +214,24 @@ h2 {
 
 .logos-container img:hover {
     transform: scale(1.05);
+}
+
+/* Localização */
+.localizacao {
+    text-align: center;
+}
+
+.map-container {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    margin-top: 15px;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 350px;
+    border: none;
 }
 
 /* Footer */
@@ -234,6 +285,45 @@ footer {
     }
 
     .logos-container img {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    object-fit: contain;
+
         width: 100px;
     }
+
+    .video-card iframe {
+        height: 160px;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.3rem;
+    }
+    .header-text h1 {
+        font-size: 1.6rem;
+    }
+    .carousel-btn {
+        width: 35px;
+        font-size: 16px;
+    }
+    .video-card iframe {
+        height: 140px;
+    }
+}
+
+
+/* Logo principal */
+.logo {
+    filter: drop-shadow(0 0 8px rgba(0,180,216,0.8)) drop-shadow(2px 4px 6px rgba(0,0,0,0.7));
+}
+
+/* Ajuste cores dos cards */
+section {
+    background: rgba(0, 60, 120, 0.15);
+    border: 1px solid rgba(0, 140, 200, 0.4);
+}
+
+.empresas {
+    background: rgba(0, 120, 200, 0.08);
 }
