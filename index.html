@@ -1,143 +1,184 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Integra UniSenai - Feira da Indústria</title>
+  <title>Integra UniSenai - Feira da Indústria 2025</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
 </head>
-<body>
-  <header>
-    <div class="header-content">
-      <img src="images/logo.png" alt="Logo Integra UniSenai" class="logo"/>
-      <div class="header-text">
-        <h1>Integra UniSenai</h1>
-        <p class="subtitle">Feira da Indústria, Tecnologia e Graduação</p>
+<body class="bg-slate-950 text-slate-100 font-inter">
+
+  <header class="bg-slate-900/90 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,.35)] fixed w-full z-50 border-b border-cyan-400/20">
+    <nav class="container mx-auto px-5 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="images/logo.png" alt="Logo Integra UniSenai" class="site-logo"/>
+        <span class="hidden sm:block text-lg md:text-xl font-bold tracking-wide text-cyan-200 drop-glow">
+          Integra UniSenai
+        </span>
       </div>
-    </div>
+      <button class="md:hidden px-3 py-2 rounded-lg border border-cyan-400/30 text-cyan-200" id="menuToggle">Menu</button>
+      <div id="menu" class="hidden md:flex items-center gap-6">
+        <a href="#sobre" class="nav-link">Sobre</a>
+        <a href="#programacao" class="nav-link">Programação</a>
+        <a href="#carrossel" class="nav-link">Fotos</a>
+        <a href="#empresas" class="nav-link">Empresas</a>
+        <a href="#contato" class="nav-link">Contato</a>
+      </div>
+    </nav>
   </header>
 
-  <main>
-    <!-- SOBRE O EVENTO -->
-    <section class="sobre">
-      <h2>Sobre o Evento</h2>
-      <p>
-        A <strong>Integra UniSenai</strong> nasceu como um desafio acadêmico lançado pela coordenação aos alunos de Engenharia Mecânica e Engenharia de Controle e Automação. 
-        Seu objetivo inicial foi tornar a Semana Acadêmica mais atrativa, conectando <strong>teoria e prática</strong> em um ambiente dinâmico e integrador.
+  <section class="hero-bg pt-28 pb-20 text-center">
+    <div class="container mx-auto px-6">
+      <h1 class="text-4xl md:text-6xl font-extrabold font-orbitron text-cyan-200 leading-tight header-glow">
+        Feira da Indústria • Tecnologia & Inovação
+      </h1>
+      <p class="mt-4 text-cyan-100/90 text-lg md:text-xl max-w-3xl mx-auto">
+        Dia <strong class="text-cyan-300">06 de novembro de 2025</strong> — aproximando empresas, estudantes e docentes em um ambiente de inovação aplicada.
       </p>
-      <br>
-      <p>
-        A organização do evento é conduzida pelo Comitê Acadêmico da UniSenai, que coordena as atividades de planejamento, estruturação e divulgação. 
-        A feira busca fortalecer a integração entre graduação e setor industrial, criando um espaço único de <strong>inovação</strong>, <strong>desenvolvimento tecnológico</strong> e <strong>protagonismo estudantil</strong>.
-      </p>
-      <br>
-      <p>
-        Durante a semana, os participantes têm acesso a <strong>palestras técnicas</strong>, <strong>exposição de projetos</strong>, <strong>visitas a laboratórios e empresas</strong>, além da grande feira que conecta estudantes, professores e indústrias parceiras.
-      </p>
-    </section>
 
-    <!-- PROGRAMAÇÃO -->
-    <section class="programacao">
-      <h2>Programação 2025</h2>
-      <p>De <strong>07 a 11 de novembro de 2025</strong>, o evento contará com:</p>
-      <ul>
-        <li><strong>Abertura oficial:</strong> às 14h, com palestra inaugural sobre inovação e Indústria 4.0.</li>
-        <li><strong>Diversos estandes:</strong> empresas e fornecedores da indústria apresentando tecnologias e soluções práticas.</li>
-        <li><strong>Atividades acadêmicas e interativas:</strong> oficinas, workshops e dinâmicas que aproximam teoria e prática.</li>
-        <li><strong>Visitas técnicas:</strong> aos laboratórios da UniSenai e empresas parceiras, proporcionando experiências reais.</li>
-        <li><strong>Feira de Inovação:</strong> exposição de protótipos, startups e soluções tecnológicas desenvolvidas pelos alunos.</li>
-        <li><strong>Encerramento:</strong> apresentações finais de projetos acadêmicos e reconhecimento das melhores iniciativas.</li>
-      </ul>
-    </section>
-
-    <!-- CARROSSEL -->
-    <section class="carrossel">
-      <h2>Fotos da Feira de 2024</h2>
-      <div class="carousel-container">
-        <div class="carousel-track">
-          <img src="images/projeto1.png" alt="Projeto 1 - 2024" class="carousel-item">
-          <img src="images/feira1.png" alt="Feira 1 - 2024" class="carousel-item">
-          <img src="images/projeto2.png" alt="Projeto 2 - 2024" class="carousel-item">
-          <img src="images/feira2.png" alt="Feira 2 - 2024" class="carousel-item">
-          <img src="images/projeto3.png" alt="Projeto 3 - 2024" class="carousel-item">
-          <img src="images/feira3.png" alt="Feira 3 - 2024" class="carousel-item">
-          <img src="images/projeto4.png" alt="Projeto 4 - 2024" class="carousel-item">
-          <img src="images/feira4.png" alt="Feira 4 - 2024" class="carousel-item">
-          <img src="images/projeto5.png" alt="Projeto 5 - 2024" class="carousel-item">
-          <img src="images/feira5.png" alt="Feira 5 - 2024" class="carousel-item">
-          <img src="images/projeto6.png" alt="Projeto 6 - 2024" class="carousel-item">
-          <img src="images/projeto7.png" alt="Projeto 7 - 2024" class="carousel-item">
-          <img src="images/projeto8.png" alt="Projeto 8 - 2024" class="carousel-item">
-          <img src="images/projeto9.png" alt="Projeto 9 - 2024" class="carousel-item">
+      <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto bg-slate-900/50 border border-cyan-400/20 rounded-2xl p-6 shadow-2xl">
+        <div class="text-center">
+          <div id="days" class="count-number">00</div>
+          <div class="count-label">Dias</div>
         </div>
-        <button class="carousel-btn prev">&#10094;</button>
-        <button class="carousel-btn next">&#10095;</button>
+        <div class="text-center">
+          <div id="hours" class="count-number">00</div>
+          <div class="count-label">Horas</div>
+        </div>
+        <div class="text-center">
+          <div id="minutes" class="count-number">00</div>
+          <div class="count-label">Minutos</div>
+        </div>
+        <div class="text-center">
+          <div id="seconds" class="count-number">00</div>
+          <div class="count-label">Segundos</div>
+        </div>
       </div>
-    </section>
-
-    <!-- VÍDEOS -->
-    <section class="videos">
-  <h2>Vídeos da Feira 2024</h2>
-  <div class="videos-container">
-    <div class="video-card">
-      <video controls playsinline preload="metadata" poster="images/thumb-feira.png" width="100%">
-        <source src="videos/video-feira-tecnica.mp4" type="video/mp4">
-        Seu navegador não suporta o elemento <code>video</code>.
-      </video>
-      <p>Feira de empresas e inovações tecnológicas.</p>
     </div>
-  </div>
-</section>
+  </section>
 
+  <section id="sobre" class="section">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="section-title">Sobre o Evento</h2>
+      <p class="section-text max-w-4xl mx-auto">
+        A <strong>Integra UniSenai</strong> nasceu como um desafio acadêmico aos alunos de Engenharia Mecânica e Engenharia de Controle e Automação,
+        com a missão de tornar a Semana Acadêmica mais atrativa e conectada ao mercado. O evento promove a integração entre
+        <strong>teoria e prática</strong>, fortalecendo a colaboração entre graduação e setor industrial em um ambiente de
+        <strong>inovação</strong>, <strong>desenvolvimento tecnológico</strong> e <strong>protagonismo estudantil</strong>.
+      </p>
+      <p class="section-text max-w-4xl mx-auto mt-4">
+        Ao longo da semana, ocorrem <strong>palestras técnicas</strong>, <strong>exposição de projetos</strong> e <strong>visitas a laboratórios e empresas</strong>.
+        A feira é o ponto de encontro entre estudantes, professores e indústrias parceiras — um espaço para gerar
+        conexões, oportunidades de estágio e novas parcerias.
+      </p>
+    </div>
+  </section>
 
-    <!-- EMPRESAS -->
-    <section class="empresas">
-      <h2>Empresas Participantes de 2024</h2>
-      <p>Mais de 30 empresas marcaram presença na edição passada. Algumas delas:</p>
-      <div class="logos-container">
-        <a href="https://www.elektra.net.br/quem-somos" target="_blank"><img src="images/empresa1.png" alt="Empresa 1"/></a>
-        <a href="https://astecacompressores.com.br/" target="_blank"><img src="images/empresa2.png" alt="Empresa 2"/></a>
-        <a href="https://bermo.com.br/empresa" target="_blank"><img src="images/empresa3.png" alt="Empresa 3"/></a>
-        <a href="https://www.fiedler.com.br/a-fiedler/" target="_blank"><img src="images/empresa4.png" alt="Empresa 4"/></a>
-        <a href="https://www.glight.com.br/blog/" target="_blank"><img src="images/empresa5.png" alt="Empresa 5"/></a>
-        <a href="https://www.compudeck.com.br/" target="_blank"><img src="images/empresa6.png" alt="Empresa 6"/></a>
-        <a href="https://hennings.com.br/sobre-nos/" target="_blank"><img src="images/empresa7.png" alt="Empresa 7"/></a>
-        <a href="https://hsoldas.com.br/blog/" target="_blank"><img src="images/empresa8.png" alt="Empresa 8"/></a>
-        <a href="https://pumps-systems.netzsch.com/pt-BR" target="_blank"><img src="images/empresa9.png" alt="Empresa 9"/></a>
-        <a href="https://roboterin.com.br/a-empresa/" target="_blank"><img src="images/empresa10.png" alt="Empresa 10"/></a>
-        <a href="https://sensoambiental.com.br" target="_blank"><img src="images/empresa11.png" alt="Empresa 11"/></a>
-        <a href="https://www.weishaupt.com.br/empresa/a-empresa" target="_blank"><img src="images/empresa12.png" alt="Empresa 12"/></a>
+  <section id="programacao" class="section">
+    <div class="container mx-auto px-6">
+      <h2 class="section-title text-center">Programação – 06 de novembro de 2025</h2>
+      <p class="section-text text-center max-w-3xl mx-auto">
+        Toda a programação da feira foi pensada para facilitar o contato direto entre empresas e comunidade acadêmica.
+      </p>
+      <ul class="prog-list max-w-3xl mx-auto mt-8">
+        <li><strong>Abertura oficial (14h):</strong> palestra sobre Indústria 4.0 e perspectivas de cooperação universidade–empresa.</li>
+        <li><strong>Estandes & demonstrações:</strong> tecnologias, soluções e portfólio de serviços apresentados pelas empresas.</li>
+        <li><strong>Feira de inovação:</strong> projetos dos alunos, protótipos e startups acadêmicas com espaço para networking.</li>
+        <li><strong>Visitas guiadas:</strong> laboratórios da UniSenai e apresentação de infraestrutura de P&D.</li>
+        <li><strong>Encerramento & networking:</strong> conexões finais e encaminhamentos para parcerias e vagas de estágio.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="carrossel" class="section">
+    <div class="container mx-auto px-6">
+      <h2 class="section-title text-center">Projetos & Feira – Galeria</h2>
+
+      <div class="carousel-container mt-8">
+        <button class="carousel-btn prev" aria-label="Anterior">‹</button>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <img src="images/projeto1.png" alt="Projeto 1" class="carousel-item">
+            <img src="images/feira1.png" alt="Feira 1" class="carousel-item">
+            <img src="images/projeto2.png" alt="Projeto 2" class="carousel-item">
+            <img src="images/feira2.png" alt="Feira 2" class="carousel-item">
+            <img src="images/projeto3.png" alt="Projeto 3" class="carousel-item">
+            <img src="images/feira3.png" alt="Feira 3" class="carousel-item">
+            <img src="images/projeto4.png" alt="Projeto 4" class="carousel-item">
+            <img src="images/feira4.png" alt="Feira 4" class="carousel-item">
+            <img src="images/projeto5.png" alt="Projeto 5" class="carousel-item">
+            <img src="images/feira5.png" alt="Feira 5" class="carousel-item">
+            <img src="images/projeto6.png" alt="Projeto 6" class="carousel-item">
+            <img src="images/projeto7.png" alt="Projeto 7" class="carousel-item">
+            <img src="images/projeto8.png" alt="Projeto 8" class="carousel-item">
+            <img src="images/projeto9.png" alt="Projeto 9" class="carousel-item">
+          </div>
+        </div>
+        <button class="carousel-btn next" aria-label="Próximo">›</button>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- LOCALIZAÇÃO -->
-    <section class="localizacao">
-      <h2>Localização</h2>
-      <p>O evento acontecerá no campus da <strong>UniSENAI</strong>, em Blumenau - SC.</p>
-      <div class="map-container">
+  <section class="section">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="section-title">Panorama dos eventos de 2024</h2>
+      <div class="video-card mt-6 mx-auto">
+        <video controls playsinline preload="metadata" poster="images/thumb-feira.png">
+          <source src="videos/video-feira-tecnica.mp4" type="video/mp4">
+          Seu navegador não suporta o elemento <code>video</code>.
+        </video>
+        <p class="video-caption">Panorama dos eventos de 2024.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="empresas" class="section">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="section-title">Empresas Participantes de 2024</h2>
+      <p class="section-text max-w-3xl mx-auto">
+        Mais de 30 empresas marcaram presença na edição passada. Confira algumas delas:
+      </p>
+
+      <div class="logos-grid mt-10">
+        <a href="https://www.elektra.net.br/quem-somos" target="_blank"><img src="images/empresa1.png" alt="Empresa 1"></a>
+        <a href="https://astecacompressores.com.br/" target="_blank"><img src="images/empresa2.png" alt="Empresa 2"></a>
+        <a href="https://bermo.com.br/empresa" target="_blank"><img src="images/empresa3.png" alt="Empresa 3"></a>
+        <a href="https://www.fiedler.com.br/a-fiedler/" target="_blank"><img src="images/empresa4.png" alt="Empresa 4"></a>
+        <a href="https://www.glight.com.br/blog/" target="_blank"><img src="images/empresa5.png" alt="Empresa 5"></a>
+        <a href="https://www.compudeck.com.br/" target="_blank"><img src="images/empresa6.png" alt="Empresa 6"></a>
+        <a href="https://hennings.com.br/sobre-nos/" target="_blank"><img src="images/empresa7.png" alt="Empresa 7"></a>
+        <a href="https://hsoldas.com.br/blog/" target="_blank"><img src="images/empresa8.png" alt="Empresa 8"></a>
+        <a href="https://pumps-systems.netzsch.com/pt-BR" target="_blank"><img src="images/empresa9.png" alt="Empresa 9"></a>
+        <a href="https://roboterin.com.br/a-empresa/" target="_blank"><img src="images/empresa10.png" alt="Empresa 10"></a>
+        <a href="https://sensoambiental.com.br" target="_blank"><img src="images/empresa11.png" alt="Empresa 11"></a>
+        <a href="https://www.weishaupt.com.br/empresa/a-empresa" target="_blank"><img src="images/empresa12.png" alt="Empresa 12"></a>
+      </div>
+    </div>
+  </section>
+  
+  <section id="contato" class="section">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="section-title">Localização & Contatos</h2>
+      <p class="section-text max-w-3xl mx-auto">O evento acontecerá no campus da <strong>UniSENAI</strong>, em Blumenau - SC.</p>
+      <div class="map-container mt-6">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3557.9033189863603!2d-49.07809122456071!3d-26.90656327665088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94df18d338da29ad%3A0x4302fceae5f4fafa!2sUniSENAI!5e0!3m2!1spt-BR!2sbr!4v1756436733507!5m2!1spt-BR!2sbr"
-          width="100%" height="250" style="border:0;"
-          allowfullscreen="1" loading="lazy"
+          width="100%" height="250" style="border:0;" allowfullscreen="1" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade">
         </iframe>
       </div>
-    </section>
-  </main>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-content">
-      <h2>Contatos</h2>
-      <p><strong>Redes Sociais:</strong> 
-        <a href="https://www.instagram.com/sa_unisenai" target="_blank">Instagram</a> | 
-        <a href="https://www.linkedin.com/in/comit%C3%AA-semana-acad%C3%AAmica-unisenai-1aa692380/" target="_blank">LinkedIn</a>
-      </p>
-      <br>
-      <strong>Desenvolvido pelo Comitê Acadêmico da UniSenai 2025</strong>
+      <div class="mt-8 text-cyan-100">
+        <p>
+          <a href="https://www.instagram.com/sa_unisenai" target="_blank" class="link">Instagram</a> |
+          <a href="https://www.linkedin.com/in/comit%C3%AA-semana-acad%C3%AAmica-unisenai-1aa692380/" target="_blank" class="link">LinkedIn</a>
+        </p>
+        <p class="mt-4 text-xs text-cyan-200/70">© 2025 Comitê Acadêmico UniSenai</p>
+      </div>
     </div>
-  </footer>
+  </section>
 
   <script src="js/script.js"></script>
 </body>
