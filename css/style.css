@@ -1,29 +1,36 @@
-:root{
-  --c-bg-start:#061728;
-  --c-bg-end:#000a12;
-  --c-primary:#00b4d8;
-  --c-primary-strong:#00e0ff;
-  --c-accent:#2dd4bf;
-  --c-card:#0b1f33;
-  --c-border:rgba(0, 224, 255, .25);
+/* ----------------- VARIÁVEIS ----------------- */
+:root {
+  --c-bg-start: #061728;
+  --c-bg-end: #000a12;
+  --c-primary: #00b4d8;
+  --c-primary-strong: #00e0ff;
+  --c-accent: #2dd4bf;
+  --c-card: #0b1f33;
+  --c-border: rgba(0, 224, 255, .25);
 }
 
+/* ----------------- TIPOGRAFIA ----------------- */
 .font-inter { font-family: 'Inter', sans-serif; }
 .font-orbitron { font-family: 'Orbitron', sans-serif; }
 
-body{
-  -webkit-text-size-adjust: 100%; 
-  padding-top: 70px; 
+body {
+  -webkit-text-size-adjust: 100%;
+  padding-top: 70px;
+  background: var(--c-bg-end);
+  color: #e0f7ff;
+  line-height: 1.6;
 }
 
-header{
+/* ----------------- HEADER ----------------- */
+header {
   top: 0;
   left: 0;
   position: fixed;
   width: 100%;
   z-index: 50;
 }
-.site-logo{
+
+.site-logo {
   width: clamp(70px, 22vw, 100px);
   height: auto;
   filter:
@@ -32,12 +39,24 @@ header{
     drop-shadow(0 0 6px rgba(128, 120, 120, 0.25));
 }
 
-.hero-bg{
+.nav-link {
+  color: rgb(190, 230, 255);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .25s ease, text-shadow .25s ease;
+}
+.nav-link:hover {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(0,224,255,.35);
+}
+
+/* ----------------- HERO ----------------- */
+.hero-bg {
   background: radial-gradient(1100px 600px at 50% -10%, rgba(0,224,255,.18), transparent 60%),
               linear-gradient(145deg, #04203a 0%, #000a12 60%, #00060c 100%);
 }
 
-.header-glow{
+.header-glow {
   text-shadow:
     0 0 6px rgba(0, 224, 255, .35),
     0 0 18px rgba(0, 224, 255, .18);
@@ -47,50 +66,48 @@ header{
   line-height: 1.2;
 }
 
-.drop-glow{
+.drop-glow {
   text-shadow: 0 0 8px rgba(0,224,255,.25);
 }
 
-.nav-link{
-  color: rgb(190, 230, 255);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color .25s ease, text-shadow .25s ease;
-}
-.nav-link:hover{
-  color: #fff;
-  text-shadow: 0 0 8px rgba(0,224,255,.35);
-}
-
-.count-number{
+/* ----------------- CONTAGEM REGRESSIVA ----------------- */
+.count-number {
   font: 700 clamp(1.2rem, 5vw, 1.8rem) 'Orbitron', sans-serif;
   color: #ccf7ff;
   text-shadow: 0 0 10px rgba(0,224,255,.3), 0 0 20px rgba(0,224,255,.2);
   line-height: 1;
 }
-.count-label{
+
+.count-label {
   margin-top: .25rem;
   color: rgb(185, 220, 235);
   font-size: .85rem;
   letter-spacing: .06em;
 }
 
-.section{
+/* ----------------- SEÇÕES GERAIS ----------------- */
+.section {
   padding: clamp(48px, 6vw, 72px) 0;
   background:
     radial-gradient(1000px 400px at 20% 0%, rgba(0,224,255,.06), transparent 60%),
     linear-gradient(180deg, rgba(0,10,18,.0), rgba(0,10,18,.0));
   box-shadow: 0 6px 14px rgba(0,0,0,.35);
+  transition: box-shadow .3s ease;
 }
 
-.section-title{
+.section:hover {
+  box-shadow: 0 0 20px rgba(0,255,255,.2), 0 0 40px rgba(0,224,255,.15);
+}
+
+.section-title {
   font: 800 clamp(1.8rem, 3vw, 2.4rem) 'Orbitron', sans-serif;
   color: #d6f6ff;
   letter-spacing: .02em;
   text-shadow: 0 0 10px rgba(0,224,255,.25);
   margin: 0 0 20px 0;
 }
-.section-text{
+
+.section-text {
   color: rgb(205, 230, 245);
   line-height: 1.7;
   font-size: clamp(1rem, 1.25vw, 1.125rem);
@@ -99,11 +116,13 @@ header{
   text-align: center;
 }
 
-.prog-list{
+/* ----------------- LISTA DE PROGRAMAÇÃO ----------------- */
+.prog-list {
   list-style: none;
   padding: 0;
 }
-.prog-list li{
+
+.prog-list li {
   position: relative;
   margin: 12px 0;
   padding-left: 28px;
@@ -114,7 +133,8 @@ header{
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.prog-list li::before{
+
+.prog-list li::before {
   content: "▹";
   position: absolute;
   left: 8px;
@@ -124,28 +144,28 @@ header{
   font-weight: 700;
 }
 
-.carousel-container{
+/* ----------------- CARROSSEL ----------------- */
+.carousel-container {
   position: relative;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1400px;
   margin: 0 auto;
-  transition: box-shadow .3s ease;
-  border-radius: 14px; 
-  overflow: hidden; 
-}
-
-.carousel-container:hover{
-  box-shadow: 0 0 20px rgba(0, 224, 255, .4), 0 0 40px rgba(0, 200, 255, .2);
-}
-
-.carousel-viewport{
+  border-radius: 18px;
   overflow: hidden;
-  border-radius: 14px;
-  border: 1px solid rgba(0,224,255,.2);
-  box-shadow: 0 10px 30px rgba(0,0,0,.45);
+  background: linear-gradient(135deg, #020617 0%, #001a33 40%, #003344 100%);
+  transition: box-shadow .3s ease;
 }
 
-.carousel-track{
+.carousel-container:hover {
+  box-shadow: 0 0 20px rgba(0,255,255,.35), 0 0 50px rgba(0,224,255,.25);
+}
+
+.carousel-viewport {
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.carousel-track {
   display: flex;
   transition: transform .5s ease;
 }
@@ -155,51 +175,61 @@ header{
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #000;
+  background: radial-gradient(circle at center,
+              rgba(0, 224, 255, 0.18) 0%,
+              rgba(0, 140, 200, 0.08) 40%,
+              rgba(0, 10, 20, 0.95) 100%);
 }
 
 .carousel-item img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
+  height: 80vh;
+  max-height: 800px;
+  object-fit: cover; /* cobre sem distorcer */
+  display: block;
+  margin: 0 auto;
+  background: transparent;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .carousel-item img {
     height: auto;
-    max-height: 50vh;
+    max-height: 70vh;
+    object-fit: cover;
   }
 }
 
-.carousel-btn{
+.carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 44px; height: 44px;
+  width: 44px; 
+  height: 44px;
   border-radius: 9999px;
   border: 1px solid rgba(0,224,255,.35);
   background: rgba(4, 32, 58, .6);
   color: #e7fbff;
   font-size: 28px;
   line-height: 1;
-  display: grid; place-items: center;
+  display: grid; 
+  place-items: center;
   cursor: pointer;
   transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
   box-shadow: 0 8px 22px rgba(0,0,0,.45);
   z-index: 2;
 }
 
-.carousel-btn:hover{
+.carousel-btn:hover {
   transform: translateY(-50%) scale(1.06);
   background: rgba(0, 88, 120, .65);
-  box-shadow: 0 0 16px rgba(0,224,255,.35);
+  box-shadow: 0 0 16px rgba(0,224,255,.45);
 }
 
-.carousel-btn.prev{ left: 12px; }
-.carousel-btn.next{ right: 12px; }
+.carousel-btn.prev { left: 12px; }
+.carousel-btn.next { right: 12px; }
 
-.video-card{
+/* ----------------- VÍDEO ----------------- */
+.video-card {
   max-width: 820px;
   width: 100%;
   padding: 18px;
@@ -213,11 +243,11 @@ header{
   transition: box-shadow .3s ease;
 }
 
-.video-card:hover{
+.video-card:hover {
   box-shadow: 0 0 20px rgba(0,255,200,.4), 0 0 40px rgba(0,255,150,.2);
 }
 
-.video-card video{
+.video-card video {
   width: 100% !important;
   height: auto !important;
   object-fit: cover;
@@ -227,68 +257,111 @@ header{
   box-shadow: 0 6px 20px rgba(0,0,0,.45);
 }
 
-.video-caption{
+.video-caption {
   margin-top: 10px;
   color: rgb(200, 235, 250);
   font-weight: 500;
 }
 
-.logos-grid{
+/* ----------------- EMPRESAS 2024 (LOGOS) ----------------- */
+.logos-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
-@media (min-width: 400px){ .logos-grid{ grid-template-columns: repeat(3, 1fr);} }
-@media (min-width: 768px){ .logos-grid{ grid-template-columns: repeat(4, 1fr);} }
-@media (min-width: 1024px){ .logos-grid{ grid-template-columns: repeat(6, 1fr);} }
 
-.logos-grid a{
-  display: grid; place-items: center;
+@media (min-width: 400px) {
+  .logos-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 768px) {
+  .logos-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .logos-grid { grid-template-columns: repeat(6, 1fr); }
+}
+
+.logos-grid a {
+  display: grid;
+  place-items: center;
   padding: 16px;
   background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(0,224,255,.06));
   border-radius: 14px;
   border: 1px solid rgba(0,224,255,.12);
   transition: transform .2s ease, box-shadow .3s ease, border-color .2s ease;
 }
-.logos-grid a:hover{
+
+.logos-grid a:hover {
   transform: translateY(-2px);
   border-color: rgba(0,224,255,.25);
   box-shadow: 0 0 20px rgba(0,224,255,.35);
 }
 
 .logos-grid img {
-  width: 100px;            
-  height: 100px;           
-  object-fit: contain;     
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
   margin: auto;
   border-radius: 8px;
-  background: #c1d5e0;
+  background: #97a2a8;
   padding: 10px;
   box-sizing: border-box;
   box-shadow: 0 2px 6px rgba(0,0,0,.25);
-  filter:
-    drop-shadow(0 1px 0 rgba(255,255,255,.35))
-    drop-shadow(0 0 6px rgba(12, 52, 92, .4));
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,.35)) drop-shadow(0 0 6px rgba(12, 52, 92, .4));
 }
 
-.map-container{
+/* ----------------- EMPRESAS 2026 (FORMULÁRIO) ----------------- */
+.section-2026 {
+  background: linear-gradient(135deg, #00111a 0%, #001a33 50%, #000c14 100%);
+  border-top: 1px solid rgba(0,224,255,.15);
+  border-bottom: 1px solid rgba(0,224,255,.15);
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.form-btn {
+  display: inline-block;
+  background: linear-gradient(90deg, #00b4d8, #00e0ff);
+  color: #001a22;
+  font-weight: bold;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: transform .25s ease, box-shadow .25s ease;
+  box-shadow: 0 4px 14px rgba(0, 224, 255, 0.35);
+}
+
+.form-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0,255,255,.4);
+}
+
+/* ----------------- MAPA ----------------- */
+.map-container {
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid rgba(0,224,255,.2);
   box-shadow: 0 10px 26px rgba(0,0,0,.5);
 }
 
-.map-container iframe{
+.map-container iframe {
   width: 100% !important;
   min-height: 280px;
   border-radius: 12px;
 }
 
-#menu.open{ display: flex !important; flex-direction: column; gap: 10px; }
+/* ----------------- GERAIS ----------------- */
+#menu.open {
+  display: flex !important;
+  flex-direction: column;
+  gap: 10px;
+}
 
-.container{ max-width: 1160px; }
+.container { max-width: 1160px; }
 
-img, video{
+img, video {
   max-width: 100%;
   height: auto;
   display: block;
