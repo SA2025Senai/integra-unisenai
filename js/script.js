@@ -1,75 +1,99 @@
-const menuToggle = document.getElementById('menuToggle');
-const menu = document.getElementById('menu');
+document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('menu');
 
-if (menuToggle && menu) {
-  menuToggle.addEventListener('click', () => {
-    const isOpen = menu.classList.toggle('open');
-    menu.style.display = isOpen ? 'flex' : 'none';
-    menuToggle.setAttribute('aria-expanded', String(isOpen));
-  });
-}
+    if (menuToggle && menu) {
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('open');
+        });
 
-const track = document.querySelector('.carousel-track');
-const items = track ? Array.from(track.children) : [];
-const nextButton = document.querySelector('.carousel-btn.next');
-const prevButton = document.querySelector('.carousel-btn.prev');
-let currentIndex = 0;
-const slideCount = items.length;
-const slideIntervalMs = 5000; // 5 segundos
-let autoplayTimer = null;
-let isPaused = false;
+        // Close menu when a link is clicked (for mobile)
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 768) { // Tailwind's 'md' breakpoint is 768px
+                    menu.classList.add('hidden');
+                    menu.classList.remove('open');
+                }
+            });
+        });
+    }
 
-function updateCarousel(index = currentIndex) {
-  if (!track) return;
-  currentIndex = (index + slideCount) % slideCount;
-  track.style.transform = `translateX(-${currentIndex * 100}%)`;
-}
+    // Countdown Timer
+    const countdownDate = new Date('Nov 6, 2025 00:00:00').getTime();
 
-function nextSlide() { updateCarousel(currentIndex + 1); }
-function prevSlide() { updateCarousel(currentIndex - 1); }
+    const x = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
 
-if (nextButton) nextButton.addEventListener('click', () => { nextSlide(); resetAutoplay(); });
-if (prevButton) prevButton.addEventListener('click', () => { prevSlide(); resetAutoplay(); });
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-function startAutoplay() {
-  stopAutoplay();
-  autoplayTimer = setInterval(() => {
-    if (!isPaused) nextSlide();
-  }, slideIntervalMs);
-}
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
 
-function stopAutoplay() { if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; } }
-function resetAutoplay() { stopAutoplay(); startAutoplay(); }
+        if (daysEl) daysEl.innerText = String(days).padStart(2, '0');
+        if (hoursEl) hoursEl.innerText = String(hours).padStart(2, '0');
+        if (minutesEl) minutesEl.innerText = String(minutes).padStart(2, '0');
+        if (secondsEl) secondsEl.innerText = String(seconds).padStart(2, '0');
 
-const carouselContainer = document.querySelector('.carousel-container');
-if (carouselContainer) {
-  carouselContainer.addEventListener('mouseenter', () => { isPaused = true; });
-  carouselContainer.addEventListener('mouseleave', () => { isPaused = false; });
-  carouselContainer.addEventListener('touchstart', () => { isPaused = true; }, {passive: true});
-  carouselContainer.addEventListener('touchend', () => { isPaused = false; }, {passive: true});
-}
+        if (distance < 0) {
+            clearInterval(x);
+            if (daysEl) daysEl.innerText = '00';
+            if (hoursEl) hoursEl.innerText = '00';
+            if (minutesEl) minutesEl.innerText = '00';
+            if (secondsEl) secondsEl.innerText = '00';
+        }
+    }, 1000);
 
-if (slideCount > 1) startAutoplay();
+    // Carousel functionality
+    const carouselTrack = document.querySelector('.carousel-track');
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    const prevBtn = document.querySelector('.carousel-btn.prev');
+    const nextBtn = document.querySelector('.carousel-btn.next');
+    let currentIndex = 0;
+    const slideCount = carouselItems.length;
+    const slideIntervalMs = 5000; // 5 segundos
+    let autoplayTimer = null;
+    let isPaused = false;
 
-const eventDate = new Date('2025-11-06T14:00:00').getTime();
-const daysEl = document.getElementById('days');
-const hoursEl = document.getElementById('hours');
-const minutesEl = document.getElementById('minutes');
-const secondsEl = document.getElementById('seconds');
+    const updateCarousel = (index = currentIndex) => {
+        if (!carouselTrack || slideCount === 0) return;
+        currentIndex = (index + slideCount) % slideCount;
+        const itemWidth = carouselItems[0].clientWidth;
+        carouselTrack.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
+    };
 
-function updateCountdown() {
-  const now = Date.now();
-  const diff = eventDate - now;
-  if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
-  if (diff <= 0) { daysEl.textContent = '00'; hoursEl.textContent = '00'; minutesEl.textContent = '00'; secondsEl.textContent = '00'; return; }
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-  daysEl.textContent = String(days).padStart(2, '0');
-  hoursEl.textContent = String(hours).padStart(2, '0');
-  minutesEl.textContent = String(minutes).padStart(2, '0');
-  secondsEl.textContent = String(seconds).padStart(2, '0');
-}
-setInterval(updateCountdown, 1000);
-updateCountdown();
+    const nextSlide = () => updateCarousel(currentIndex + 1);
+    const prevSlide = () => updateCarousel(currentIndex - 1);
+
+    const stopAutoplay = () => { if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; } };
+    const startAutoplay = () => {
+        stopAutoplay();
+        autoplayTimer = setInterval(() => {
+            if (!isPaused) nextSlide();
+        }, slideIntervalMs);
+    };
+    const resetAutoplay = () => { stopAutoplay(); startAutoplay(); };
+
+    if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); resetAutoplay(); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); resetAutoplay(); });
+
+    const carouselContainer = document.querySelector('.carousel-container');
+    if (carouselContainer) {
+        carouselContainer.addEventListener('mouseenter', () => { isPaused = true; });
+        carouselContainer.addEventListener('mouseleave', () => { isPaused = false; });
+        carouselContainer.addEventListener('touchstart', () => { isPaused = true; }, {passive: true});
+        carouselContainer.addEventListener('touchend', () => { isPaused = false; }, {passive: true});
+    }
+
+    if (slideCount > 1) startAutoplay();
+
+    window.addEventListener('resize', updateCarousel);
+    updateCarousel();
+});
+

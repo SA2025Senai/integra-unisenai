@@ -21,6 +21,17 @@ body {
   line-height: 1.6;
 }
 
+/* ----------------- ANIMAÇÕES GLOBAIS ----------------- */
+@keyframes circuitFlow {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes rotateBackground {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 /* ----------------- HEADER ----------------- */
 header {
   top: 0;
@@ -28,6 +39,24 @@ header {
   position: fixed;
   width: 100%;
   z-index: 50;
+  overflow: hidden;
+  position: relative;
+  background: var(--c-bg-end);
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0,224,255,0.08) 0%, transparent 25%, transparent 75%, rgba(0,224,255,0.08) 100%);
+  background-size: 400% 100%;
+  animation: circuitFlow 15s linear infinite;
+  z-index: -1;
+  opacity: 0.7;
+  pointer-events: none;
 }
 
 .site-logo {
@@ -179,23 +208,25 @@ header {
               rgba(0, 224, 255, 0.18) 0%,
               rgba(0, 140, 200, 0.08) 40%,
               rgba(0, 10, 20, 0.95) 100%);
+  height: 450px; /* Altura fixa para o item do carrossel */
 }
 
 .carousel-item img {
   width: 100%;
-  height: 80vh;
-  max-height: 800px;
-  object-fit: cover; /* cobre sem distorcer */
+  height: 100%; /* Preenche a altura do item do carrossel */
+  object-fit: contain; /* Garante que o vídeo não seja cortado */
   display: block;
   margin: 0 auto;
   background: transparent;
 }
 
 @media (max-width: 600px) {
+  .carousel-item {
+    height: 300px;
+  }
   .carousel-item img {
-    height: auto;
-    max-height: 70vh;
-    object-fit: cover;
+    height: 100%;
+    object-fit: contain;
   }
 }
 
@@ -241,33 +272,55 @@ header {
     0 10px 28px rgba(0,0,0,.45),
     0 0 24px rgba(0,224,255,.18);
   transition: box-shadow .3s ease;
+  position: relative; /* Para a animação de fundo */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .video-card:hover {
   box-shadow: 0 0 20px rgba(0,255,200,.4), 0 0 40px rgba(0,255,150,.2);
 }
 
+.video-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg at 50% 50%, rgba(0, 224, 255, 0.05) 0%, rgba(0, 224, 255, 0.01) 20%, transparent 50%, rgba(0, 224, 255, 0.01) 80%, rgba(0, 224, 255, 0.05) 100%);
+  animation: rotateBackground 20s linear infinite;
+  z-index: -1;
+  opacity: 0.4;
+}
+
 .video-card video {
-  width: 100% !important;
-  height: auto !important;
-  object-fit: cover;
-  max-height: 60vh;
+  width: 100%;
+  height: auto;
+  max-height: 60vh; /* Limita a altura para não ficar muito grande */
   border-radius: 12px;
   display: block;
   box-shadow: 0 6px 20px rgba(0,0,0,.45);
+  object-fit: contain; /* Garante que o vídeo não seja cortado */
 }
 
 .video-caption {
   margin-top: 10px;
   color: rgb(200, 235, 250);
   font-weight: 500;
+  text-align: center;
 }
 
-/* ----------------- EMPRESAS 2024 (LOGOS) ----------------- */
+/* ----------------- LOGOS GRID ----------------- */
 .logos-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Mais responsivo */
+  gap: 15px; /* Ajuste do gap */
+  justify-items: center;
+  align-items: center;
+  padding: 20px 0;
 }
 
 @media (min-width: 400px) {
@@ -275,40 +328,96 @@ header {
 }
 
 @media (min-width: 768px) {
-  .logos-grid { grid-template-columns: repeat(4, 1fr); }
+  .logos-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 @media (min-width: 1024px) {
   .logos-grid { grid-template-columns: repeat(6, 1fr); }
 }
 
+/* Centralizar última fileira de logos */
+.logos-grid.expositoras-grid {
+  justify-content: center;
+  /* Para centralizar a última linha, se houver menos itens */
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .logos-grid a {
-  display: grid;
-  place-items: center;
-  padding: 16px;
-  background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(0,224,255,.06));
-  border-radius: 14px;
-  border: 1px solid rgba(0,224,255,.12);
-  transition: transform .2s ease, box-shadow .3s ease, border-color .2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px; /* Reduzindo o padding para aproximar o glow */
+  background: rgba(255,255,255,0.15); /* Fundo mais claro para visibilidade */
+  border-radius: 10px;
+  border: 1px solid rgba(0,224,255,.15); /* Borda mais visível */
+  transition: transform .2s ease, box-shadow .3s ease, border-color .2s ease, background .2s ease;
+  position: relative;
+  overflow: hidden;
+  width: 100%; /* Garante que o link ocupe o espaço do grid */
+  max-width: 120px; /* Limita o tamanho do card do logo */
+  height: 90px; /* Altura fixa para os cards dos logos */
+  margin: 7.5px; /* Metade do gap para flexbox */
 }
 
 .logos-grid a:hover {
-  transform: translateY(-2px);
-  border-color: rgba(0,224,255,.25);
-  box-shadow: 0 0 20px rgba(0,224,255,.35);
+  transform: translateY(-3px) scale(1.05);
+  border-color: rgba(0,224,255,.6);
+  box-shadow: 0 0 25px rgba(0,224,255,.7), 0 0 50px rgba(0,224,255,.35);
+  background: rgba(0,224,255,0.2); /* Fundo um pouco mais visível no hover */
 }
 
-.logos-grid img {
-  width: 100px;
-  height: 100px;
+.logo-img, .logo-img-expositor {
+  width: auto; /* Ajusta a largura automaticamente */
+  height: 100%; /* Preenche a altura do contêiner */
+  max-width: 90%; /* Limita a largura da imagem dentro do card */
+  max-height: 80%; /* Limita a altura da imagem dentro do card */
   object-fit: contain;
-  margin: auto;
-  border-radius: 8px;
-  background: #97a2a8;
-  padding: 10px;
-  box-sizing: border-box;
-  box-shadow: 0 2px 6px rgba(0,0,0,.25);
-  filter: drop-shadow(0 1px 0 rgba(255,255,255,.35)) drop-shadow(0 0 6px rgba(12, 52, 92, .4));
+  margin: auto; /* Centraliza a imagem */
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: drop-shadow(0 0 3px rgb(9, 207, 233)); /* Glow mais próximo e visível */
+  transition: filter .3s ease;
+  padding: 0 !important; 
+}
+
+.logos-grid a:hover .logo-img, .logos-grid a:hover .logo-img-expositor {
+  filter: drop-shadow(0 0 8px rgba(0,224,255,1)); /* Glow mais intenso no hover */
+}
+
+/* Efeito de partículas brilhantes */
+.logos-grid a::before, .logos-grid a::after {
+  content: '';
+  position: absolute;
+  background: rgba(0,224,255,0.8);
+  border-radius: 50%;
+  opacity: 0;
+  animation: particleEffect 2s infinite ease-out;
+  z-index: 0;
+}
+
+.logos-grid a::before {
+  width: 4px;
+  height: 4px;
+  top: 15%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.logos-grid a::after {
+  width: 2px;
+  height: 2px;
+  top: 85%;
+  left: 85%;
+  animation-delay: 1s;
+}
+
+@keyframes particleEffect {
+  0% { transform: scale(0) translateY(0); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: scale(1.5) translateY(-10px); opacity: 0; }
 }
 
 /* ----------------- EMPRESAS 2026 (FORMULÁRIO) ----------------- */
@@ -366,3 +475,59 @@ img, video {
   height: auto;
   display: block;
 }
+
+/* ----------------- FOOTER ----------------- */
+footer {
+  position: relative;
+  overflow: hidden;
+  padding: 40px 0;
+  background: var(--c-bg-end);
+  border-top: 1px solid rgba(0,224,255,.15);
+  text-align: center;
+  color: rgb(180, 210, 225);
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0,224,255,0.05) 0%, transparent 20%, transparent 80%, rgba(0,224,255,0.05) 100%);
+  background-size: 400% 100%;
+  animation: circuitFlow 15s linear infinite reverse;
+  z-index: -1;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+footer .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+footer .social-links a {
+  color: rgb(180, 210, 225);
+  font-size: 1.5rem;
+  margin: 0 10px;
+  transition: color 0.2s ease;
+}
+
+footer .social-links a:hover {
+  color: var(--c-primary-strong);
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  footer .container {
+    flex-direction: column;
+  }
+}
+
