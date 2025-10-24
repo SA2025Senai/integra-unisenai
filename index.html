@@ -10,7 +10,7 @@
 </head>
 <body class="bg-slate-950 text-slate-100 font-inter">
 
-  <header class="bg-slate-900/90 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,.35)] fixed w-full z-50 border-b border-slate-700/50 header-animated">
+  <header class="bg-slate-900/90 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,.35)] fixed w-full z-50 border-b border-slate-700/50 header-animated transition-all duration-300">
     <nav class="container mx-auto px-5 py-3 flex items-center justify-between">
       <div class="flex items-center gap-3">
         <img src="images/logo.webp" alt="Logo Integra UniSenai" class="site-logo" decoding="async"/>
@@ -142,7 +142,7 @@
         Mais de 30 empresas marcaram presença na edição passada. Confira algumas delas:
       </p>
 
-      <div class="logos-grid mt-10">
+      <div class="logos-grid mt-10 expositoras-grid">
         <a href="https://www.elektra.net.br/quem-somos" target="_blank"><img src="images/empresa1.webp" alt="Empresa 1" decoding="async" class="logo-img"></a>
         <a href="https://astecacompressores.com.br/" target="_blank"><img src="images/empresa2.webp" alt="Empresa 2" decoding="async" class="logo-img"></a>
         <a href="https://bermo.com.br/empresa" target="_blank"><img src="images/empresa3.webp" alt="Empresa 3" decoding="async" class="logo-img"></a>
@@ -165,27 +165,26 @@
     <p class="section-text max-w-3xl mx-auto">
       Empresas já confirmadas para a edição de 2025.
     </p>
-    <div class="logos-grid mt-10">
-      <a href="#"><img src="images/logos expositores/atom-1.png" alt="Expositora 1" class="logo-img-expositor"></a>
-      <a href="#"><img src="images/logos expositores/weishaupt.png" alt="Expositora 24" class="logo-img-expositor"></a> <a href="#"><img src="images/logos expositores/elektra.png" alt="Expositora 5" class="logo-img-expositor"></a>
-      <a href="#"><img src="images/logos expositores/engetel-1.png" alt="Expositora 6" class="logo-img-expositor"></a>
-      <a href="#"><img src="images/logos expositores/fersiltec-1.png" alt="Expositora 7" class="logo-img-expositor"></a>
-      <a href="#"><img src="images/logos expositores/fiedler.png" alt="Expositora 8" class="logo-img-expositor"></a>
-      <a href="#"><img src="images/logos expositores/fozit.png" alt="Expositora 9" class="logo-img-expositor"></a>
-      <a href="#"><img src="images/logos expositores/global sonic-1.png" alt="Expositora 10" class="logo-img-expositor"></a>
-      <a href="#"><img src="images/logos expositores/hsoldas.png" alt="Expositora 11" class="logo-img-expositor"></a>
-      <a href="#"><img src="images/logos expositores/inox do brasil-1.png" alt="Expositora 12" class="logo-img-expositor"></a>
-      <a href="#"><img src="images/logos expositores/joclamar.png" alt="Expositora 13" class="logo-img-expositor"></a>
-      <a href="#"><img src="images/logos expositores/netzch.png" alt="Expositora 14" class="logo-img-expositor"></a>
-      <a href="#"><img src="images/logos expositores/plug solutions.png" alt="Expositora 15" class="logo-img-expositor"></a>
-      <a href="#"><img src="images/logos expositores/proesi.png" alt="Expositora 16" class="logo-img-expositor"></a>
-      <a href="#"><img src="images/logos expositores/provolt.png" alt="Expositora 17" class="logo-img-expositor"></a>
-      <a href="#"><img src="images/logos expositores/RH-1.png" alt="Expositora 19" class="logo-img-expositor"></a>
+    <div class="logos-grid mt-10 expositoras-grid">
+      <a href="https://atomsolucoes.ind.br/" target="_blank"><img src="images/logos expositores/atom-1.png" alt="Expositora 1" class="logo-img-expositor"></a>
+      <a href="https://www.weishaupt.com.br/"><img src="images/logos expositores/weishaupt.png" alt="Expositora 24" class="logo-img-expositor"></a> <a href="#"><img src="images/logos expositores/elektra.png" alt="Expositora 5" class="logo-img-expositor"></a>
+      <a href="https://www.grupoengetel.com.br/"><img src="images/logos expositores/engetel-1.png" alt="Expositora 6" class="logo-img-expositor"></a>
+      <a href="https://fersiltec.com.br/"><img src="images/logos expositores/fersiltec-1.png" alt="Expositora 7" class="logo-img-expositor"></a>
+      <a href="https://www.fiedler.com.br/"><img src="images/logos expositores/fiedler.png" alt="Expositora 8" class="logo-img-expositor"></a>
+      <a href="https://fozit.com.br/"><img src="images/logos expositores/fozit.png" alt="Expositora 9" class="logo-img-expositor"></a>
+      <a href="https://globalsonic.com.br/"><img src="images/logos expositores/global sonic-1.png" alt="Expositora 10" class="logo-img-expositor"></a>
+      <a href="https://hsoldas.com.br/"><img src="images/logos expositores/hsoldas.png" alt="Expositora 11" class="logo-img-expositor"></a>
+      <a href="https://inoxdobrasil.com.br/"><img src="images/logos expositores/inox do brasil-1.png" alt="Expositora 12" class="logo-img-expositor"></a>
+      <a href="https://joclamar.com.br/"><img src="images/logos expositores/joclamar.png" alt="Expositora 13" class="logo-img-expositor"></a>
+      <a href="https://pumps-systems.netzsch.com/pt-BR"><img src="images/logos expositores/netzch.png" alt="Expositora 14" class="logo-img-expositor"></a>
+      <a href="https://plugsolutions.com.br/"><img src="images/logos expositores/plug solutions.png" alt="Expositora 15" class="logo-img-expositor"></a>
+      <a href="www.proesi.com.br"><img src="images/logos expositores/proesi.png" alt="Expositora 16" class="logo-img-expositor"></a>
+      <a href="https://www.provolt.com.br/pt-br"><img src="images/logos expositores/provolt.png" alt="Expositora 17" class="logo-img-expositor"></a>
+      <a href="https://www.rhautomacao.com.br/"><img src="images/logos expositores/RH-1.png" alt="Expositora 19" class="logo-img-expositor"></a>
  
-      <a href="#"><img src="images/logos expositores/SKA.png" alt="Expositora 21" class="logo-img-expositor"></a>
-      <a href="#"><img src="images/logos expositores/tag engenharia.png" alt="Expositora 22" class="logo-img-expositor"></a>
-      <a href="#"><img src="images/logos expositores/valemat-1.png" alt="Expositora 23" class="logo-img-expositor"></a>
-      <a href="#"><img src="images/logos expositores/weishaupt.png" alt="Expositora 24" class="logo-img-expositor"></a>
+      <a href="https://www.ska.com.br/"><img src="images/logos expositores/SKA.png" alt="Expositora 21" class="logo-img-expositor"></a>
+      <a href="https://www.tageng.com.br/"><img src="images/logos expositores/tag engenharia.png" alt="Expositora 22" class="logo-img-expositor"></a>
+      <a href="https://valemat.com.br/"><img src="images/logos expositores/valemat-1.png" alt="Expositora 23" class="logo-img-expositor"></a>
     </div>
   </div>
 </section>
@@ -196,7 +195,7 @@
       <p class="section-text">
         Entre em contato para saber como sua empresa pode fazer parte da próxima edição da Feira da Indústria.
       </p>
-      <a href="#" class="form-btn mt-6">Fale Conosco</a>
+      <a href="#" class="form-btn mt-6">Fale Conosco <i class="fas fa-arrow-right ml-2"></i></a>
     </div>
   </section>
 
@@ -204,10 +203,10 @@
     <div class="container mx-auto px-6">
       <h2 class="section-title text-center">Localização</h2>
       <p class="section-text text-center max-w-3xl mx-auto">
-        A Feira da Indústria acontece no campus da UniSenai, em São José dos Pinhais, Paraná.
+        A Feira da Indústria acontece no campus da UniSenai, em Blumenau, Santa Catarina.
       </p>
       <div class="map-container mt-8">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3600.0000000000005!2d-49.19999999999999!3d-25.500000000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDMwJzAwLjAiUyA0OcKwMTInMDQuMCJX!5e0!3m2!1spt-BR!2sbr!4v1678901234567!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3557.9033189863603!2d-49.07809122456071!3d-26.90656327665088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94df18d338da29ad%3A0x4302fceae5f4fafa!2sUniSENAI!5e0!3m2!1spt-BR!2sbr!4v1761259458417!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </section>
@@ -224,7 +223,6 @@
   </footer>
 
   <script src="js/script.js"></script>
-  <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script> <!-- Substitua pelo seu kit Font Awesome -->
+  <script src="https://kit.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script> 
 </body>
 </html>
-

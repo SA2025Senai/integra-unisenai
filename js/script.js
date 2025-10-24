@@ -1,4 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    // ----------------- ANIMAÇÃO DO HEADER NO SCROLL -----------------
+    const header = document.querySelector('header');
+    const headerAnimatedClass = 'header-animated';
+
+    const handleScroll = () => {
+        if (window.scrollY > 50) {
+            header.classList.remove(headerAnimatedClass);
+        } else {
+            header.classList.add(headerAnimatedClass);
+        }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Executa uma vez ao carregar a página
+
+    // ----------------- MENU MOBILE -----------------
     const menuToggle = document.getElementById('menuToggle');
     const menu = document.getElementById('menu');
 
@@ -50,50 +67,57 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 1000);
 
-    // Carousel functionality
-    const carouselTrack = document.querySelector('.carousel-track');
-    const carouselItems = document.querySelectorAll('.carousel-item');
-    const prevBtn = document.querySelector('.carousel-btn.prev');
-    const nextBtn = document.querySelector('.carousel-btn.next');
-    let currentIndex = 0;
-    const slideCount = carouselItems.length;
-    const slideIntervalMs = 5000; // 5 segundos
-    let autoplayTimer = null;
-    let isPaused = false;
+    // ----------------- CARROSSEL -----------------
+    const initCarousel = () => {
+        const carouselTrack = document.querySelector('.carousel-track');
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        const prevBtn = document.querySelector('.carousel-btn.prev');
+        const nextBtn = document.querySelector('.carousel-btn.next');
+        const carouselContainer = document.querySelector('.carousel-container');
 
-    const updateCarousel = (index = currentIndex) => {
-        if (!carouselTrack || slideCount === 0) return;
-        currentIndex = (index + slideCount) % slideCount;
-        const itemWidth = carouselItems[0].clientWidth;
-        carouselTrack.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
+        if (!carouselTrack || carouselItems.length === 0) return;
+
+        let currentIndex = 0;
+        const slideCount = carouselItems.length;
+        const slideIntervalMs = 5000; // 5 segundos
+        let autoplayTimer = null;
+        let isPaused = false;
+
+        const updateCarousel = (index = currentIndex) => {
+            currentIndex = (index + slideCount) % slideCount;
+            // Recalcula a largura do item a cada atualização para lidar com redimensionamento
+            const itemWidth = carouselItems[0].clientWidth; 
+            carouselTrack.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
+        };
+
+        const nextSlide = () => updateCarousel(currentIndex + 1);
+        const prevSlide = () => updateCarousel(currentIndex - 1);
+
+        const stopAutoplay = () => { if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; } };
+        const startAutoplay = () => {
+            stopAutoplay();
+            autoplayTimer = setInterval(() => {
+                if (!isPaused) nextSlide();
+            }, slideIntervalMs);
+        };
+        const resetAutoplay = () => { stopAutoplay(); startAutoplay(); };
+
+        if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); resetAutoplay(); });
+        if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); resetAutoplay(); });
+
+        if (carouselContainer) {
+            carouselContainer.addEventListener('mouseenter', () => { isPaused = true; });
+            carouselContainer.addEventListener('mouseleave', () => { isPaused = false; });
+            carouselContainer.addEventListener('touchstart', () => { isPaused = true; }, {passive: true});
+            carouselContainer.addEventListener('touchend', () => { isPaused = false; }, {passive: true});
+        }
+
+        if (slideCount > 1) startAutoplay();
+
+        window.addEventListener('resize', updateCarousel);
+        updateCarousel(); // Inicializa a posição
     };
-
-    const nextSlide = () => updateCarousel(currentIndex + 1);
-    const prevSlide = () => updateCarousel(currentIndex - 1);
-
-    const stopAutoplay = () => { if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; } };
-    const startAutoplay = () => {
-        stopAutoplay();
-        autoplayTimer = setInterval(() => {
-            if (!isPaused) nextSlide();
-        }, slideIntervalMs);
-    };
-    const resetAutoplay = () => { stopAutoplay(); startAutoplay(); };
-
-    if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); resetAutoplay(); });
-    if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); resetAutoplay(); });
-
-    const carouselContainer = document.querySelector('.carousel-container');
-    if (carouselContainer) {
-        carouselContainer.addEventListener('mouseenter', () => { isPaused = true; });
-        carouselContainer.addEventListener('mouseleave', () => { isPaused = false; });
-        carouselContainer.addEventListener('touchstart', () => { isPaused = true; }, {passive: true});
-        carouselContainer.addEventListener('touchend', () => { isPaused = false; }, {passive: true});
-    }
-
-    if (slideCount > 1) startAutoplay();
-
-    window.addEventListener('resize', updateCarousel);
-    updateCarousel();
+    
+    initCarousel();
 });
 

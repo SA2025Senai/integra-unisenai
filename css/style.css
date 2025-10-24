@@ -128,6 +128,27 @@ header::before {
   box-shadow: 0 0 20px rgba(0,255,255,.2), 0 0 40px rgba(0,224,255,.15);
 }
 
+/* Borda tecnológica para seções de empresas */
+.tech-glow-border {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(0,224,255,.1);
+  border-bottom: 1px solid rgba(0,224,255,.1);
+  background: linear-gradient(180deg, #020617 0%, #000a12 100%);
+}
+
+.tech-glow-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top, rgba(0,224,255,0.05) 0%, transparent 40%);
+  z-index: 0;
+  pointer-events: none;
+}
+
 .section-title {
   font: 800 clamp(1.8rem, 3vw, 2.4rem) 'Orbitron', sans-serif;
   color: #d6f6ff;
@@ -315,42 +336,19 @@ header::before {
 
 /* ----------------- LOGOS GRID ----------------- */
 .logos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Mais responsivo */
-  gap: 15px; /* Ajuste do gap */
-  justify-items: center;
-  align-items: center;
-  padding: 20px 0;
-}
-
-@media (min-width: 400px) {
-  .logos-grid { grid-template-columns: repeat(3, 1fr); }
-}
-
-@media (min-width: 768px) {
-  .logos-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .logos-grid { grid-template-columns: repeat(6, 1fr); }
-}
-
-/* Centralizar última fileira de logos */
-.logos-grid.expositoras-grid {
-  justify-content: center;
-  /* Para centralizar a última linha, se houver menos itens */
-  display: flex;
+  display: flex; /* Usar flexbox para melhor controle de centralização */
   flex-wrap: wrap;
+  justify-content: center; /* Centraliza os itens na linha */
+  gap: 15px; /* Espaçamento entre os itens */
+  padding: 20px 0;
 }
 
 .logos-grid a {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px; /* Reduzindo o padding para aproximar o glow */
-  background: rgba(255,255,255,0.15); /* Fundo mais claro para visibilidade */
+  padding: 10px; /* Aumentando o padding para melhor efeito visual e espaço */
+  background: rgba(0, 0, 0, 0.2); /* Fundo sutil para visibilidade */
   border-radius: 10px;
   border: 1px solid rgba(0,224,255,.15); /* Borda mais visível */
   transition: transform .2s ease, box-shadow .3s ease, border-color .2s ease, background .2s ease;
@@ -359,7 +357,6 @@ header::before {
   width: 100%; /* Garante que o link ocupe o espaço do grid */
   max-width: 120px; /* Limita o tamanho do card do logo */
   height: 90px; /* Altura fixa para os cards dos logos */
-  margin: 7.5px; /* Metade do gap para flexbox */
 }
 
 .logos-grid a:hover {
@@ -367,9 +364,8 @@ header::before {
   border-color: rgba(0,224,255,.6);
   box-shadow: 0 0 25px rgba(0,224,255,.7), 0 0 50px rgba(0,224,255,.35);
   background: rgba(0,224,255,0.2); /* Fundo um pouco mais visível no hover */
-}
-
-.logo-img, .logo-img-expositor {
+  z-index: 10; /* Garante que o hover fique por cima */
+}.logo-img, .logo-img-expositor {
   width: auto; /* Ajusta a largura automaticamente */
   height: 100%; /* Preenche a altura do contêiner */
   max-width: 90%; /* Limita a largura da imagem dentro do card */
@@ -378,13 +374,16 @@ header::before {
   margin: auto; /* Centraliza a imagem */
   background: transparent !important;
   box-shadow: none !important;
-  filter: drop-shadow(0 0 3px rgb(9, 207, 233)); /* Glow mais próximo e visível */
+  padding: 0 !important; 
+  /* Removendo o drop-shadow para evitar o ofuscamento */
+  filter: none;
+} 3px rgb(9, 207, 233)); /* Glow mais próximo e visível */
   transition: filter .3s ease;
   padding: 0 !important; 
 }
 
 .logos-grid a:hover .logo-img, .logos-grid a:hover .logo-img-expositor {
-  filter: drop-shadow(0 0 8px rgba(0,224,255,1)); /* Glow mais intenso no hover */
+  filter: drop-shadow(0 0 8px rgba(0,224,255,0.8)); /* Glow mais sutil no hover */
 }
 
 /* Efeito de partículas brilhantes */
